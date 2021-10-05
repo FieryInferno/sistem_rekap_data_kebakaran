@@ -41,6 +41,47 @@
       </div>
     </div>
   </div>
+  <div class="row mb-5">
+    <div class="col">
+      <div class="row card border-white shadow p-5">
+        <canvas id="myLineChart" style="margin-left: 3rem;"></canvas>
+        <table class="table table-bordered" width="100%">
+          <tbody class="text-center">
+            <tr>
+              <td width="4%">2020</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+              <td width="8%">2</td>
+            </tr>
+            <tr>
+              <td>2019</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -84,5 +125,48 @@
   };
   
   var myBarChart = new Chart(document.getElementById("myChart"), configMaintenance);
+
+  const dataLine = {
+    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+    datasets: [
+      {
+        label: '2020',
+        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        backgroundColor: ['#aa0808'],
+        borderColor: ['#aa0808'],
+        borderWidth: 1
+      }, {
+        label: '2019',
+        data: [12, 11, 10, 9, 8, 7, 6 , 5, 4, 3, 2, 1],
+        backgroundColor: ['#f89603'],
+        borderColor: ['#f89603'],
+        borderWidth: 1
+      }
+    ]
+  };
+
+  const configLine = {
+    type: 'line',
+    data: dataLine,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        },
+        title: {
+          display: true,
+          text: 'Perbandingan Trend Kebakaran Berdasarkan Bulan di Provinsi DKI Jakarta (Januari s.d Desember) Tahun 2019 dan 2020'
+        }
+      },
+    },
+  };
+  
+  var myLineChart = new Chart(document.getElementById("myLineChart"), configLine);
 </script>
 @endsection
