@@ -84,6 +84,9 @@ class EventController extends Controller
       foreach($b19 as $b) { $temp += $b->jp + $b->ju + $b->jb + $b->js + $b->jt; }
       $bulan19[] = $temp;
     }
+    $data['bulan20']  = $bulan20;
+    $data['bulan19']  = $bulan19;
+    
       
     $bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober', 'November', 'Desember'];
     // sec-1 chart end
@@ -188,8 +191,6 @@ class EventController extends Controller
       // sec-7 chart end
       
     return view('welcome', $data)
-      ->with('wilayah',json_encode($wilayah,JSON_NUMERIC_CHECK))
-      ->with('bulan',json_encode($bulan,JSON_NUMERIC_CHECK))->with('bulan20',json_encode($bulan20,JSON_NUMERIC_CHECK))->with('bulan19',json_encode($bulan19,JSON_NUMERIC_CHECK))
       ->with('klausa',json_encode($klausa,JSON_NUMERIC_CHECK))->with('klausa20',json_encode($klausa20,JSON_NUMERIC_CHECK))->with('klausa19',json_encode($klausa19,JSON_NUMERIC_CHECK))
       ->with('objek',json_encode($objek,JSON_NUMERIC_CHECK))->with('objek20',json_encode($objek20,JSON_NUMERIC_CHECK))->with('objek19',json_encode($objek19,JSON_NUMERIC_CHECK))
       ->with('masy',json_encode($masy,JSON_NUMERIC_CHECK))->with('masyTrue',json_encode($masyTrue,JSON_NUMERIC_CHECK))->with('masyFalse',json_encode($masyFalse,JSON_NUMERIC_CHECK))

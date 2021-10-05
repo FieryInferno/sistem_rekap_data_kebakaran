@@ -49,33 +49,33 @@
           <tbody class="text-center">
             <tr>
               <td width="4%">2020</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
-              <td width="8%">2</td>
+              <td width="8%">{{ $bulan20[0] }}</td>
+              <td width="8%">{{ $bulan20[1] }}</td>
+              <td width="8%">{{ $bulan20[2] }}</td>
+              <td width="8%">{{ $bulan20[3] }}</td>
+              <td width="8%">{{ $bulan20[4] }}</td>
+              <td width="8%">{{ $bulan20[5] }}</td>
+              <td width="8%">{{ $bulan20[6] }}</td>
+              <td width="8%">{{ $bulan20[7] }}</td>
+              <td width="8%">{{ $bulan20[8] }}</td>
+              <td width="8%">{{ $bulan20[9] }}</td>
+              <td width="8%">{{ $bulan20[10] }}</td>
+              <td width="8%">{{ $bulan20[11] }}</td>
             </tr>
             <tr>
               <td>2019</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
+              <td>{{ $bulan19[0] }}</td>
+              <td>{{ $bulan19[1] }}</td>
+              <td>{{ $bulan19[2] }}</td>
+              <td>{{ $bulan19[3] }}</td>
+              <td>{{ $bulan19[4] }}</td>
+              <td>{{ $bulan19[5] }}</td>
+              <td>{{ $bulan19[6] }}</td>
+              <td>{{ $bulan19[7] }}</td>
+              <td>{{ $bulan19[8] }}</td>
+              <td>{{ $bulan19[9] }}</td>
+              <td>{{ $bulan19[10] }}</td>
+              <td>{{ $bulan19[11] }}</td>
             </tr>
           </tbody>
         </table>
@@ -131,13 +131,13 @@
     datasets: [
       {
         label: '2020',
-        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        data: [{{ $bulan20[0] }}, {{ $bulan20[1] }}, {{ $bulan20[2] }}, {{ $bulan20[3] }}, {{ $bulan20[4] }}, {{ $bulan20[5] }}, {{ $bulan20[6] }}, {{ $bulan20[7] }}, {{ $bulan20[8] }}, {{ $bulan20[9] }}, {{ $bulan20[10] }}, {{ $bulan20[11] }}],
         backgroundColor: ['#aa0808'],
         borderColor: ['#aa0808'],
         borderWidth: 1
       }, {
         label: '2019',
-        data: [12, 11, 10, 9, 8, 7, 6 , 5, 4, 3, 2, 1],
+        data: [{{ $bulan19[0] }}, {{ $bulan19[1] }}, {{ $bulan19[2] }}, {{ $bulan19[3] }}, {{ $bulan19[4] }}, {{ $bulan19[5] }}, {{ $bulan19[6] }}, {{ $bulan19[7] }}, {{ $bulan19[8] }}, {{ $bulan19[9] }}, {{ $bulan19[10] }}, {{ $bulan19[11] }}],
         backgroundColor: ['#f89603'],
         borderColor: ['#f89603'],
         borderWidth: 1
