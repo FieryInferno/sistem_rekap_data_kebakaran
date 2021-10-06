@@ -82,6 +82,13 @@
       </div>
     </div>
   </div>
+  <div class="row mb-5">
+    <div class="col">
+      <div class="row card border-white shadow p-5">
+        <canvas id="myPieChart"></canvas>
+      </div>
+    </div>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -168,5 +175,24 @@
   };
   
   var myLineChart = new Chart(document.getElementById("myLineChart"), configLine);
+
+  const dataPie = {
+    labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
+    datasets: [{
+      data: [300, 50, 100, 24, 79, 45],
+      backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
+      hoverOffset: 4
+    }]
+  };
+
+  const configPie = {
+    type: 'pie',
+    data: dataPie,
+    options: {
+      responsive: true,
+    },
+  };
+  
+  var myPieChart = new Chart(document.getElementById("myPieChart"), configPie);
 </script>
 @endsection
