@@ -86,10 +86,27 @@
     <div class="col">
       <div class="row card border-white shadow p-5">
         <div class="row">
-          <div class="col-6">
-            <canvas id="myPieChart" width="50%"></canvas>
+          <strong class="text-center mb-3">Perbandingan Trend Kebakaran Berdasarkan Dugaan Penyebab Kebakaran di Provinsi DKI Jakarta (Januari s.d Desember) Tahun 2019 dan 2020</strong>
+          <div class="col">
+            <canvas id="myPieChart"></canvas>
           </div>
-          <div class="col-6"></div>
+          <div class="col">
+            <canvas id="myPie1Chart"></canvas>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col">LS : Lisrik</div>
+              <div class="col">Gas : Gas</div>
+            </div>
+            <div class="col">
+              <div class="col">MS : Membakar Sampah</div>
+              <div class="col">RK : Rokok</div>
+            </div>
+            <div class="col">
+              <div class="col">LLN : Lilin</div>
+              <div class="col">LN : Lainnya</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -199,5 +216,24 @@
   };
   
   var myPieChart = new Chart(document.getElementById("myPieChart"), configPie);
+
+  const dataPie1 = {
+    labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
+    datasets: [{
+      data: [{{ $klausa19['k_ls'] }}, {{ $klausa19['k_gas'] }}, {{ $klausa19['k_lln'] }}, {{ $klausa19['k_ms'] }}, {{ $klausa19['k_rk'] }}, {{ $klausa19['k_ln'] }}],
+      backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
+      hoverOffset: 4
+    }]
+  };
+
+  const configPie1 = {
+    type: 'pie',
+    data: dataPie1,
+    options: {
+      responsive: true,
+    },
+  };
+  
+  var myPie1Chart = new Chart(document.getElementById("myPie1Chart"), configPie1);
 </script>
 @endsection
