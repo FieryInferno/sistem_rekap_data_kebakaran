@@ -85,7 +85,12 @@
   <div class="row mb-5">
     <div class="col">
       <div class="row card border-white shadow p-5">
-        <canvas id="myPieChart"></canvas>
+        <div class="row">
+          <div class="col-6">
+            <canvas id="myPieChart" width="50%"></canvas>
+          </div>
+          <div class="col-6"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -175,11 +180,11 @@
   };
   
   var myLineChart = new Chart(document.getElementById("myLineChart"), configLine);
-
+  
   const dataPie = {
     labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
     datasets: [{
-      data: [300, 50, 100, 24, 79, 45],
+      data: [{{ $klausa20['k_ls'] }}, {{ $klausa20['k_gas'] }}, {{ $klausa20['k_lln'] }}, {{ $klausa20['k_ms'] }}, {{ $klausa20['k_rk'] }}, {{ $klausa20['k_ln'] }}],
       backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
       hoverOffset: 4
     }]

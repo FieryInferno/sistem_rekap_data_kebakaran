@@ -100,11 +100,13 @@ class EventController extends Controller
     {
       $temp = 0;
       foreach($w20 as $w) { $temp += $w->$kl; }
-      $klausa20[] = $temp;
+      $klausa20[$kl] = $temp;
       $temp = 0;
       foreach($w19 as $w) { $temp += $w->$kl; }
-      $klausa19[] = $temp;
+      $klausa19[$kl] = $temp;
     }
+    $data['klausa20']  = $klausa20;
+    $data['klausa19']  = $klausa19;
 
     $klausa = ['Listrik','Gas','Lilin','Membakar Sampah','Rokok','Lain-lain'];
     // sec-2 chart end
@@ -191,7 +193,6 @@ class EventController extends Controller
       // sec-7 chart end
       
     return view('welcome', $data)
-      ->with('klausa',json_encode($klausa,JSON_NUMERIC_CHECK))->with('klausa20',json_encode($klausa20,JSON_NUMERIC_CHECK))->with('klausa19',json_encode($klausa19,JSON_NUMERIC_CHECK))
       ->with('objek',json_encode($objek,JSON_NUMERIC_CHECK))->with('objek20',json_encode($objek20,JSON_NUMERIC_CHECK))->with('objek19',json_encode($objek19,JSON_NUMERIC_CHECK))
       ->with('masy',json_encode($masy,JSON_NUMERIC_CHECK))->with('masyTrue',json_encode($masyTrue,JSON_NUMERIC_CHECK))->with('masyFalse',json_encode($masyFalse,JSON_NUMERIC_CHECK))
       ->with('wilmasy',json_encode($wilmasy,JSON_NUMERIC_CHECK))->with('wilmasy20',json_encode($wilmasy20,JSON_NUMERIC_CHECK))->with('wilmasy19',json_encode($wilmasy19,JSON_NUMERIC_CHECK));
