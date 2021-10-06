@@ -7,10 +7,11 @@
       <h1 class="pb-2">Rekap kasus</h1>
       <a href="/bulk_add" class="btn btn-primary p-2 shadow">+ Tambah Kasus</a>
     </div>
-  </div><button id="save_image_locally">download img</button>
+  </div>
+  <button onclick="saveImage('imagesave1')" class="btn btn-warning">Download</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5" id="imagesave">
+      <div class="row card border-white shadow p-5" id="imagesave1">
         <canvas id="myChart" style="margin-left: 3rem;"></canvas>
         <table class="table table-bordered" width="100%">
           <tbody>
@@ -41,9 +42,10 @@
       </div>
     </div>
   </div>
+  <button onclick="saveImage('imagesave2')" class="btn btn-warning">Download</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5">
+      <div class="row card border-white shadow p-5" id="imagesave2">
         <canvas id="myLineChart" style="margin-left: 3rem;"></canvas>
         <table class="table table-bordered" width="100%">
           <tbody class="text-center">
@@ -82,9 +84,10 @@
       </div>
     </div>
   </div>
+  <button onclick="saveImage('imagesave3')" class="btn btn-warning">Download</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5">
+      <div class="row card border-white shadow p-5" id="imagesave3">
         <div class="row">
           <strong class="text-center mb-3">Perbandingan Trend Kebakaran Berdasarkan Dugaan Penyebab Kebakaran di Provinsi DKI Jakarta (Januari s.d Desember) Tahun 2019 dan 2020</strong>
           <div class="col">
@@ -111,9 +114,10 @@
       </div>
     </div>
   </div>
+  <button onclick="saveImage('imagesave4')" class="btn btn-warning">Download</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5">
+      <div class="row card border-white shadow p-5" id="imagesave4">
         <div class="row">
           <strong class="text-center mb-3">Perbandingan Trend Kebakaran Berdasarkan Objek Kejadian Kebakaran di Provinsi DKI Jakarta (Januari s.d Desember) Tahun 2019 dan 2020</strong>
           <div class="col">
@@ -143,16 +147,18 @@
       </div>
     </div>
   </div>
+  <button onclick="saveImage('imagesave5')" class="btn btn-warning">Download</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5">
+      <div class="row card border-white shadow p-5" id="imagesave5">
         <canvas id="myChartDiatasi"></canvas>
       </div>
     </div>
   </div>
+  <button onclick="saveImage('imagesave6')" class="btn btn-warning">Download</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5">
+      <div class="row card border-white shadow p-5" id="imagesave6">
         <canvas id="myChartDiatasi1" style="margin-left: 3rem;"></canvas>
         <table class="table table-bordered" width="100%">
           <tbody>
@@ -192,11 +198,24 @@
         var a = document.createElement('a');
         // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
         a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-        a.download = 'somefilename.jpg';
+        a.download = 'grafik.jpg';
         a.click();
       }
     });
   });
+
+  function saveImage(params) {
+    html2canvas($('#' + params), 
+    {
+      onrendered: function (canvas) {
+        var a = document.createElement('a');
+        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.download = 'grafik.jpg';
+        a.click();
+      }
+    });
+  }
   
   const dataMaintenance = {
     labels: ['Total', 'jakarta pusat', 'jakarta utara', 'jakarta barat', 'jakarta selatan', 'jakarta timur'],
