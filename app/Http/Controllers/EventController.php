@@ -125,6 +125,8 @@ class EventController extends Controller
       foreach($w19 as $w) { $temp += $w->$o; }
       $objek19[] = $temp;
     }
+    $data['objek20']  = $objek20;
+    $data['objek19']  = $objek19;
 
     $objek = ['Bangunan Perumahan','Bangunan Umum dan Perdagangan','Bangunan Industri','Kendaraan','Instalasi Luar Gedung','Tumbuhan','Lapak','Sampah','Lain-lain'];
       // sec-4 chart end
@@ -139,63 +141,65 @@ class EventController extends Controller
         if($value == '2020') {
             $temp = 0;
             foreach($w20 as $w) { $temp += $w->jp + $w->ju + $w->jb + $w->js + $w->jt; }
-            $masyTrue[] = $temp;
+            $masyTrue['2020'] = $temp;
             $temp = 0;
             foreach($w20 as $w) { $temp += $w->jp_d + $w->ju_d + $w->jb_d + $w->js_d + $w->jt_d; }
-            $masyFalse[] = $temp;
+            $masyFalse['2020'] = $temp;
         } else if($value == '2019') {
             $temp = 0;
             foreach($w19 as $w) { $temp += $w->jp + $w->ju + $w->jb + $w->js + $w->jt; }
-            $masyTrue[] = $temp;
+            $masyTrue['2019'] = $temp;
             $temp = 0;
             foreach($w19 as $w) { $temp += $w->jp_d + $w->ju_d + $w->jb_d + $w->js_d + $w->jt_d; }
-            $masyFalse[] = $temp;
+            $masyFalse['2019'] = $temp;
         }
     }
-      // sec-6 chart 
-      
-      // sec-7 chart start
-      $wilayah_d = ['jp_d','ju_d','jb_d','js_d','jt_d'];
-      $wilayah20_d = [];
-      $wilayah19_d = [];
-      foreach($wilayah_d as $wil)
-      {
-          $temp = 0;
-          foreach($w20 as $w) { $temp += $w->$wil; }
-          $wilayah20_d[] = $temp;
-          $temp = 0;
-          foreach($w19 as $w) { $temp += $w->$wil; }
-          $wilayah19_d[] = $temp;
-      }
+    $data['masyTrue']   = $masyTrue;
+    $data['masyFalse']  = $masyFalse;
+    // sec-6 chart 
+    
+    // sec-7 chart start
+    $wilayah_d = ['jp_d','ju_d','jb_d','js_d','jt_d'];
+    $wilayah20_d = [];
+    $wilayah19_d = [];
+    foreach($wilayah_d as $wil)
+    {
+        $temp = 0;
+        foreach($w20 as $w) { $temp += $w->$wil; }
+        $wilayah20_d[] = $temp;
+        $temp = 0;
+        foreach($w19 as $w) { $temp += $w->$wil; }
+        $wilayah19_d[] = $temp;
+    }
 
-      $wilmasy = ['JP','JU','JB','JS','JT'];
-      $wilmasy20 = [];
-      $wilmasy19 = [];
-      $i = 0;
-      foreach ($wilmasy as $value) {
-          $tempTrue = $wilayah20[$i];
-          $tempFalse = $wilayah20_d[$i];
-          if($tempTrue == 0){
-              $wilmasy20[] = '0';
-          } else {
-              $wilmasy20[] = ($tempFalse / $tempTrue * 100);
-          }
-          $tempTrue = $wilayah19[$i];
-          $tempFalse = $wilayah19_d[$i];
-          if($tempTrue == 0){
-              $wilmasy19[] = '0';
-          } else {
-              $wilmasy19[] = ($tempFalse / $tempTrue * 100);
-          }
-          $i++;
-      }
-      $wilmasy = ['Jakarta Pusat','Jakarta Utara','Jakarta Barat','Jakarta Selatan','Jakarta Timur'];
+    $wilmasy = ['JP','JU','JB','JS','JT'];
+    $wilmasy20 = [];
+    $wilmasy19 = [];
+    $i = 0;
+    foreach ($wilmasy as $value) {
+        $tempTrue = $wilayah20[$i];
+        $tempFalse = $wilayah20_d[$i];
+        if($tempTrue == 0){
+            $wilmasy20[] = '0';
+        } else {
+            $wilmasy20[] = ($tempFalse / $tempTrue * 100);
+        }
+        $tempTrue = $wilayah19[$i];
+        $tempFalse = $wilayah19_d[$i];
+        if($tempTrue == 0){
+            $wilmasy19[] = '0';
+        } else {
+            $wilmasy19[] = ($tempFalse / $tempTrue * 100);
+        }
+        $i++;
+    }
+    $data['wilmasy20']   = $wilmasy20;
+    $data['wilmasy19']  = $wilmasy19;
+    
+    $wilmasy = ['Jakarta Pusat','Jakarta Utara','Jakarta Barat','Jakarta Selatan','Jakarta Timur'];
       // sec-7 chart end
       
-    return view('welcome', $data)
-      ->with('objek',json_encode($objek,JSON_NUMERIC_CHECK))->with('objek20',json_encode($objek20,JSON_NUMERIC_CHECK))->with('objek19',json_encode($objek19,JSON_NUMERIC_CHECK))
-      ->with('masy',json_encode($masy,JSON_NUMERIC_CHECK))->with('masyTrue',json_encode($masyTrue,JSON_NUMERIC_CHECK))->with('masyFalse',json_encode($masyFalse,JSON_NUMERIC_CHECK))
-      ->with('wilmasy',json_encode($wilmasy,JSON_NUMERIC_CHECK))->with('wilmasy20',json_encode($wilmasy20,JSON_NUMERIC_CHECK))->with('wilmasy19',json_encode($wilmasy19,JSON_NUMERIC_CHECK));
+    return view('welcome', $data);
   }
 
     /**

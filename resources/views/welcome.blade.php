@@ -7,10 +7,10 @@
       <h1 class="pb-2">Rekap kasus</h1>
       <a href="/bulk_add" class="btn btn-primary p-2 shadow">+ Tambah Kasus</a>
     </div>
-  </div>
+  </div><button id="save_image_locally">download img</button>
   <div class="row mb-5">
     <div class="col">
-      <div class="row card border-white shadow p-5">
+      <div class="row card border-white shadow p-5" id="imagesave">
         <canvas id="myChart" style="margin-left: 3rem;"></canvas>
         <table class="table table-bordered" width="100%">
           <tbody>
@@ -111,9 +111,93 @@
       </div>
     </div>
   </div>
+  <div class="row mb-5">
+    <div class="col">
+      <div class="row card border-white shadow p-5">
+        <div class="row">
+          <strong class="text-center mb-3">Perbandingan Trend Kebakaran Berdasarkan Objek Kejadian Kebakaran di Provinsi DKI Jakarta (Januari s.d Desember) Tahun 2019 dan 2020</strong>
+          <div class="col">
+            <canvas id="myPieChartObjek"></canvas>
+          </div>
+          <div class="col">
+            <canvas id="myPie1ChartObjek"></canvas>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col">BP : Bang. Perumahan</div>
+              <div class="col">BUP : Bang. Umum dan Perdagangan</div>
+              <div class="col">ILG : Instansi Luar Gedung</div>
+            </div>
+            <div class="col">
+              <div class="col">BI : Bang. Industri</div>
+              <div class="col">LPK : Lapak</div>
+              <div class="col">TB : Tumbuhan</div>
+            </div>
+            <div class="col">
+              <div class="col">KD : Kendaraan</div>
+              <div class="col">S : Sampah</div>
+              <div class="col">LN : Lain - Lain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col">
+      <div class="row card border-white shadow p-5">
+        <canvas id="myChartDiatasi"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col">
+      <div class="row card border-white shadow p-5">
+        <canvas id="myChartDiatasi1" style="margin-left: 3rem;"></canvas>
+        <table class="table table-bordered" width="100%">
+          <tbody>
+            <tr>
+              <td width="8%">
+                <div style="width:1rem;height:1rem;background:#aa0808;border:solid 3px #aa0808;"></div> Jan-Des 2020
+              </td>
+              <td width="15.3333333%">{{ $wilayah20[0] }}</td>
+              <td width="15.3333333%">{{ $wilayah20[1] }}</td>
+              <td width="15.3333333%">{{ $wilayah20[2] }}</td>
+              <td width="15.3333333%">{{ $wilayah20[3] }}</td>
+              <td width="15.3333333%">{{ $wilayah20[4] }}</td>
+            </tr>
+            <tr>
+              <td>
+                <div style="width:1rem;height:1rem;background:#f89603;border:solid 3px #f89603;"></div> Jan-Des 2019
+              </td>
+              <td width="15.3333333%">{{ $wilayah19[0] }}</td>
+              <td width="15.3333333%">{{ $wilayah19[1] }}</td>
+              <td width="15.3333333%">{{ $wilayah19[2] }}</td>
+              <td width="15.3333333%">{{ $wilayah19[3] }}</td>
+              <td width="15.3333333%">{{ $wilayah19[4] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://apps.sistemit.com/tutorial/html2canvas/html2canvas.js"></script>
 <script>
+  $('#save_image_locally').click(function(){
+    html2canvas($('#imagesave'), 
+    {
+      onrendered: function (canvas) {
+        var a = document.createElement('a');
+        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.download = 'somefilename.jpg';
+        a.click();
+      }
+    });
+  });
+  
   const dataMaintenance = {
     labels: ['Total', 'jakarta pusat', 'jakarta utara', 'jakarta barat', 'jakarta selatan', 'jakarta timur'],
     datasets: [
@@ -235,5 +319,125 @@
   };
   
   var myPie1Chart = new Chart(document.getElementById("myPie1Chart"), configPie1);
+
+  const dataPieObjek = {
+    labels: ['BP', 'BUP', 'BI', 'KD', 'ILG', 'TB', 'LPK', 'S', 'LN'],
+    datasets: [{
+      data: [{{ $klausa20['k_ls'] }}, {{ $klausa20['k_gas'] }}, {{ $klausa20['k_lln'] }}, {{ $klausa20['k_ms'] }}, {{ $klausa20['k_rk'] }}, {{ $klausa20['k_ln'] }}],
+      backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
+      hoverOffset: 4
+    }]
+  };
+
+  const configPieObjek = {
+    type: 'pie',
+    data: dataPieObjek,
+    options: {
+      responsive: true,
+    },
+  };
+  
+  var myPieChartObjek = new Chart(document.getElementById("myPieChartObjek"), configPieObjek);
+
+  const dataPie1Objek = {
+    labels: ['BP', 'BUP', 'BI', 'KD', 'ILG', 'TB', 'LPK', 'S', 'LN'],
+    datasets: [{
+      data: [{{ $klausa19['k_ls'] }}, {{ $klausa19['k_gas'] }}, {{ $klausa19['k_lln'] }}, {{ $klausa19['k_ms'] }}, {{ $klausa19['k_rk'] }}, {{ $klausa19['k_ln'] }}],
+      backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
+      hoverOffset: 4
+    }]
+  };
+
+  const configPie1Objek = {
+    type: 'pie',
+    data: dataPie1Objek,
+    options: {
+      responsive: true,
+    },
+  };
+  
+  var myPie1ChartObjek = new Chart(document.getElementById("myPie1ChartObjek"), configPie1Objek);
+
+  const dataDiatasi = {
+    labels: ['Jan-Des 2019', 'Jan-Des 2020'],
+    datasets: [
+      {
+        data: [{{ $masyTrue['2019'] }}, {{ $masyTrue['2020'] }}],
+        backgroundColor: ['#aa0808'],
+        borderColor: ['#aa0808'],
+        borderWidth: 1
+      }, {
+        data: [{{ $masyFalse['2019'] }}, {{ $masyFalse['2020'] }}],
+        backgroundColor: ['#f89603'],
+        borderColor: ['#f89603'],
+        borderWidth: 1
+      }
+    ]
+  };
+
+  const configDiatasi = {
+    type: 'bar',
+    data: dataDiatasi,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Perbandingan Kebakaran yang Diatasi Oleh Masyarakat Periode Tahun 2019 dan 2020'
+        }
+      },
+    },
+  };
+  
+  var myBarChartDiatasi = new Chart(document.getElementById("myChartDiatasi"), configDiatasi);
+  
+  const dataDiatasi1 = {
+    labels: ['jakarta pusat', 'jakarta utara', 'jakarta barat', 'jakarta selatan', 'jakarta timur'],
+    datasets: [
+      {
+        data: [{{ $wilmasy20[0] }}, {{ $wilmasy20[1] }}, {{ $wilmasy20[2] }}, {{ $wilmasy20[3] }}, {{ $wilmasy20[4] }}],
+        backgroundColor: ['#aa0808'],
+        borderColor: ['#aa0808'],
+        borderWidth: 1
+      }, {
+        data: [{{ $wilmasy19[0] }}, {{ $wilmasy19[1] }}, {{ $wilmasy19[2] }}, {{ $wilmasy19[3] }}, {{ $wilmasy19[4] }}],
+        backgroundColor: ['#f89603'],
+        borderColor: ['#f89603'],
+        borderWidth: 1
+      }
+    ]
+  };
+
+  const configDiatasi1 = {
+    type: 'bar',
+    data: dataDiatasi1,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Persentase Perbandingan Kebakaran yang Dapat Diatasi Masyarakat Berdasarkan Wilayah Provinsi DKI Jakarta Periode Tahun 2019 dan 2020'
+        }
+      },
+    },
+  };
+  
+  var myBarChartDiatasi1 = new Chart(document.getElementById("myChartDiatasi1"), configDiatasi1);
 </script>
 @endsection
