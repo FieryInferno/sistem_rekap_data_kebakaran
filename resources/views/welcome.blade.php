@@ -91,7 +91,8 @@
         <div class="row">
           <strong class="text-center mb-3">Perbandingan Trend Kebakaran Berdasarkan Dugaan Penyebab Kebakaran di Provinsi DKI Jakarta (Januari s.d Desember) Tahun 2019 dan 2020</strong>
           <div class="col">
-            <canvas id="myPieChart"></canvas>
+            <!-- <canvas id="myPieChart"></canvas> -->
+            <div id="myPieChart" style="width: 200%;"></div>
           </div>
           <div class="col">
             <canvas id="myPie1Chart"></canvas>
@@ -190,6 +191,31 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://apps.sistemit.com/tutorial/html2canvas/html2canvas.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ]);
+
+    var options = {
+      title: 'My Daily Activities'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+
+    chart.draw(data, options);
+  }
+</script>
 <script>
   $('#save_image_locally').click(function(){
     html2canvas($('#imagesave'), 
@@ -301,24 +327,24 @@
   
   var myLineChart = new Chart(document.getElementById("myLineChart"), configLine);
   
-  const dataPie = {
-    labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
-    datasets: [{
-      data: [{{ $klausa20['k_ls'] }}, {{ $klausa20['k_gas'] }}, {{ $klausa20['k_lln'] }}, {{ $klausa20['k_ms'] }}, {{ $klausa20['k_rk'] }}, {{ $klausa20['k_ln'] }}],
-      backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
-      hoverOffset: 4
-    }]
-  };
+  // const dataPie = {
+  //   labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
+  //   datasets: [{
+  //     data: [{{ $klausa20['k_ls'] }}, {{ $klausa20['k_gas'] }}, {{ $klausa20['k_lln'] }}, {{ $klausa20['k_ms'] }}, {{ $klausa20['k_rk'] }}, {{ $klausa20['k_ln'] }}],
+  //     backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
+  //     hoverOffset: 4
+  //   }]
+  // };
 
-  const configPie = {
-    type: 'pie',
-    data: dataPie,
-    options: {
-      responsive: true,
-    },
-  };
+  // const configPie = {
+  //   type: 'pie',
+  //   data: dataPie,
+  //   options: {
+  //     responsive: true,
+  //   },
+  // };
   
-  var myPieChart = new Chart(document.getElementById("myPieChart"), configPie);
+  // var myPieChart = new Chart(document.getElementById("myPieChart"), configPie);
 
   const dataPie1 = {
     labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
