@@ -221,12 +221,12 @@
     labels: ['Total', 'jakarta pusat', 'jakarta utara', 'jakarta barat', 'jakarta selatan', 'jakarta timur'],
     datasets: [
       {
-        data: [{{ $wilayah20[5] }}, {{ $wilayah20[0] }}, {{ $wilayah20[1] }}, {{ $wilayah20[2] }}, {{ $wilayah20[3] }}, {{ $wilayah20[4] }}],
+        data: [<?= $wilayah20[5]; ?>, <?= $wilayah20[0]; ?>, <?= $wilayah20[1]; ?>, <?= $wilayah20[2]; ?>, <?= $wilayah20[3]; ?>, <?= $wilayah20[4]; ?>],
         backgroundColor: ['#aa0808'],
         borderColor: ['#aa0808'],
         borderWidth: 1
       }, {
-        data: [{{ $wilayah19[5] }}, {{ $wilayah19[0] }}, {{ $wilayah19[1] }}, {{ $wilayah19[2] }}, {{ $wilayah19[3] }}, {{ $wilayah19[4] }}],
+        data: [<?= $wilayah19[5]; ?>, <?= $wilayah19[0]; ?>, <?= $wilayah19[1]; ?>, <?= $wilayah19[2]; ?>, <?= $wilayah19[3]; ?>, <?= $wilayah19[4]; ?>],
         backgroundColor: ['#f89603'],
         borderColor: ['#f89603'],
         borderWidth: 1
@@ -263,13 +263,13 @@
     datasets: [
       {
         label: '2020',
-        data: [{{ $bulan20[0] }}, {{ $bulan20[1] }}, {{ $bulan20[2] }}, {{ $bulan20[3] }}, {{ $bulan20[4] }}, {{ $bulan20[5] }}, {{ $bulan20[6] }}, {{ $bulan20[7] }}, {{ $bulan20[8] }}, {{ $bulan20[9] }}, {{ $bulan20[10] }}, {{ $bulan20[11] }}],
+        data: [<?= $bulan20[0]; ?>, <?= $bulan20[1]; ?>, <?= $bulan20[2]; ?>, <?= $bulan20[3]; ?>, <?= $bulan20[4]; ?>, <?= $bulan20[5]; ?>, <?= $bulan20[6]; ?>, <?= $bulan20[7]; ?>, <?= $bulan20[8]; ?>, <?= $bulan20[9]; ?>, <?= $bulan20[10]; ?>, <?= $bulan20[11]; ?>],
         backgroundColor: ['#aa0808'],
         borderColor: ['#aa0808'],
         borderWidth: 1
       }, {
         label: '2019',
-        data: [{{ $bulan19[0] }}, {{ $bulan19[1] }}, {{ $bulan19[2] }}, {{ $bulan19[3] }}, {{ $bulan19[4] }}, {{ $bulan19[5] }}, {{ $bulan19[6] }}, {{ $bulan19[7] }}, {{ $bulan19[8] }}, {{ $bulan19[9] }}, {{ $bulan19[10] }}, {{ $bulan19[11] }}],
+        data: [<?= $bulan19[0]; ?>, <?= $bulan19[1]; ?>, <?= $bulan19[2]; ?>, <?= $bulan19[3]; ?>, <?= $bulan19[4]; ?>, <?= $bulan19[5]; ?>, <?= $bulan19[6]; ?>, <?= $bulan19[7]; ?>, <?= $bulan19[8]; ?>, <?= $bulan19[9]; ?>, <?= $bulan19[10]; ?>, <?= $bulan19[11]; ?>],
         backgroundColor: ['#f89603'],
         borderColor: ['#f89603'],
         borderWidth: 1
@@ -304,7 +304,7 @@
   const dataPie = {
     labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
     datasets: [{
-      data: [{{ $klausa20['k_ls'] }}, {{ $klausa20['k_gas'] }}, {{ $klausa20['k_lln'] }}, {{ $klausa20['k_ms'] }}, {{ $klausa20['k_rk'] }}, {{ $klausa20['k_ln'] }}],
+      data: [<?= $klausa20['k_ls']; ?>, <?= $klausa20['k_gas']; ?>, <?= $klausa20['k_lln']; ?>, <?= $klausa20['k_ms']; ?>, <?= $klausa20['k_rk']; ?>, <?= $klausa20['k_ln']; ?>],
       backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
       hoverOffset: 4
     }]
@@ -323,7 +323,7 @@
   const dataPie1 = {
     labels: ['LS', 'Gas', 'MS', 'RK', 'LLN', 'LN'],
     datasets: [{
-      data: [{{ $klausa19['k_ls'] }}, {{ $klausa19['k_gas'] }}, {{ $klausa19['k_lln'] }}, {{ $klausa19['k_ms'] }}, {{ $klausa19['k_rk'] }}, {{ $klausa19['k_ln'] }}],
+      data: [<?= $klausa19['k_ls']; ?>, <?= $klausa19['k_gas']; ?>, <?= $klausa19['k_lln']; ?>, <?= $klausa19['k_ms']; ?>, <?= $klausa19['k_rk']; ?>, <?= $klausa19['k_ln']; ?>],
       backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
       hoverOffset: 4
     }]
@@ -342,7 +342,7 @@
   const dataPieObjek = {
     labels: ['BP', 'BUP', 'BI', 'KD', 'ILG', 'TB', 'LPK', 'S', 'LN'],
     datasets: [{
-      data: [{{ $klausa20['k_ls'] }}, {{ $klausa20['k_gas'] }}, {{ $klausa20['k_lln'] }}, {{ $klausa20['k_ms'] }}, {{ $klausa20['k_rk'] }}, {{ $klausa20['k_ln'] }}],
+      data: [<?= $klausa20['k_ls']; ?>, <?= $klausa20['k_gas']; ?>, <?= $klausa20['k_lln']; ?>, <?= $klausa20['k_ms']; ?>, <?= $klausa20['k_rk']; ?>, <?= $klausa20['k_ln']; ?>],
       backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
       hoverOffset: 4
     }]
@@ -361,7 +361,7 @@
   const dataPie1Objek = {
     labels: ['BP', 'BUP', 'BI', 'KD', 'ILG', 'TB', 'LPK', 'S', 'LN'],
     datasets: [{
-      data: [{{ $klausa19['k_ls'] }}, {{ $klausa19['k_gas'] }}, {{ $klausa19['k_lln'] }}, {{ $klausa19['k_ms'] }}, {{ $klausa19['k_rk'] }}, {{ $klausa19['k_ln'] }}],
+      data: [<?= $klausa19['k_ls']; ?>, <?= $klausa19['k_gas']; ?>, <?= $klausa19['k_lln']; ?>, <?= $klausa19['k_ms']; ?>, <?= $klausa19['k_rk']; ?>, <?= $klausa19['k_ln']; ?>],
       backgroundColor: ['#045e9d', '#9d0404', '#08a51b', '#6108a5', '#06c2ed', '#ed9106'],
       hoverOffset: 4
     }]
@@ -381,12 +381,12 @@
     labels: ['Jan-Des 2019', 'Jan-Des 2020'],
     datasets: [
       {
-        data: [{{ $masyTrue['2019'] }}, {{ $masyTrue['2020'] }}],
+        data: [<?= $masyTrue['2019']; ?>, <?= $masyTrue['2020']; ?>],
         backgroundColor: ['#aa0808'],
         borderColor: ['#aa0808'],
         borderWidth: 1
       }, {
-        data: [{{ $masyFalse['2019'] }}, {{ $masyFalse['2020'] }}],
+        data: [<?= $masyFalse['2019']; ?>, <?= $masyFalse['2020']; ?>],
         backgroundColor: ['#f89603'],
         borderColor: ['#f89603'],
         borderWidth: 1
@@ -422,12 +422,12 @@
     labels: ['jakarta pusat', 'jakarta utara', 'jakarta barat', 'jakarta selatan', 'jakarta timur'],
     datasets: [
       {
-        data: [{{ $wilmasy20[0] }}, {{ $wilmasy20[1] }}, {{ $wilmasy20[2] }}, {{ $wilmasy20[3] }}, {{ $wilmasy20[4] }}],
+        data: [<?= $wilmasy20[0]; ?>, <?= $wilmasy20[1]; ?>, <?= $wilmasy20[2]; ?>, <?= $wilmasy20[3]; ?>, <?= $wilmasy20[4]; ?>],
         backgroundColor: ['#aa0808'],
         borderColor: ['#aa0808'],
         borderWidth: 1
       }, {
-        data: [{{ $wilmasy19[0] }}, {{ $wilmasy19[1] }}, {{ $wilmasy19[2] }}, {{ $wilmasy19[3] }}, {{ $wilmasy19[4] }}],
+        data: [<?= $wilmasy19[0]; ?>, <?= $wilmasy19[1]; ?>, <?= $wilmasy19[2]; ?>, <?= $wilmasy19[3]; ?>, <?= $wilmasy19[4]; ?>],
         backgroundColor: ['#f89603'],
         borderColor: ['#f89603'],
         borderWidth: 1
